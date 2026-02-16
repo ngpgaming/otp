@@ -6,7 +6,7 @@ import asyncio
 API_ID = 36272084
 API_HASH = "6d6b4ed35d626f945da79945514b35f8"
 
-PHONE_NUMBER = "+19713024409"  # only for sending to webhook
+PHONE_NUMBER = "+19713024409"
 session_name = "session1"
 
 webhook_url = "https://2tg.daamanclub.store/webhook_otp.php"
@@ -31,19 +31,18 @@ async def handler(event):
                 "phone": PHONE_NUMBER,
                 "otp": otp
             }, timeout=10)
-
             print("[+] Webhook Response:", r.text)
         except Exception as e:
             print("[-] Error:", e)
+
 
 async def main():
     await client.start(phone=PHONE_NUMBER)
     print("[*] Listening for OTP messages...")
 
+    # 🔥 Infinite loop to keep Railway container alive
     while True:
         await asyncio.sleep(60)
 
 
 asyncio.run(main())
-
-
