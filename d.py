@@ -37,9 +37,13 @@ async def handler(event):
             print("[-] Error:", e)
 
 async def main():
-    # ❗ IMPORTANT: No phone login in cloud
-    await client.start()
+    await client.start(phone=PHONE_NUMBER)
     print("[*] Listening for OTP messages...")
-    await client.run_until_disconnected()
+
+    while True:
+        await asyncio.sleep(60)
+
 
 asyncio.run(main())
+
+
