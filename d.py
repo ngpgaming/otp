@@ -1,6 +1,6 @@
 from telethon import TelegramClient, events
 import re
-import requests
+import aiohttp
 import asyncio
 
 API_ID = 36272084
@@ -26,12 +26,18 @@ async def handler(event):
         print(f"[+] OTP Detected: {otp}")
 
         try:
-            r = requests.post(webhook_url, data={
-                "token": secret_token,
-                "phone": PHONE_NUMBER,
-                "otp": otp
-            }, timeout=10)
-            print("[+] Webhook Response:", r.text)
+            async with aiohttp.ClientSession() as session:
+                async with session.post(
+                    webhook_url,
+                    data={
+                        "token": secret_token,
+                        "phone": PHONE_NUMBER,
+                        "otp": otp
+                    },
+                    timeout=10
+                ) as resp:
+                    text = await resp.text()
+                    print("[+] Webhook Response:", text)
         except Exception as e:
             print("[-] Error:", e)
 
