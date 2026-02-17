@@ -34,7 +34,7 @@ async def setup_client(phone, session_name, http_session):
             try:
                 async with http_session.post(
                     WEBHOOK_URL,
-                    json={"token": SECRET_TOKEN, "phone": phone, "otp": otp},
+                    data={"token": SECRET_TOKEN, "phone": phone, "otp": otp},
                     timeout=10
                 ) as resp:
                     text = await resp.text()
@@ -55,6 +55,7 @@ async def main():
         await asyncio.gather(*(client.run_until_disconnected() for client in clients))
 
 asyncio.run(main())
+
 
 
 
