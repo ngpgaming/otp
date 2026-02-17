@@ -6,7 +6,7 @@ import aiohttp
 API_ID = 36272084
 API_HASH = "6d6b4ed35d626f945da79945514b35f8"
 
-WEBHOOK_URL = "WEBHOOK_URL = "https://www.otp-buy.shop/webhook_otp.php"
+WEBHOOK_URL = "https://www.otp-buy.shop/webhook_otp.php"
 SECRET_TOKEN = "otp_7xK92_secure"
 
 # 👉 Add all accounts here (sessions already created locally)
@@ -55,5 +55,6 @@ async def main():
         await asyncio.gather(*(client.run_until_disconnected() for client in clients))
 
 asyncio.run(main())
+
 
 
