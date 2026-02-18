@@ -13,9 +13,18 @@ SECRET_TOKEN = "otp_7xK92_secure"
 accounts = [
     { "phone": "+19713024409", "session": "session1" },
     { "phone": "+16518423797", "session": "session2" },
-    { "phone": "+919202205014", "session": "session3" },
+    { "phone": "+918971574535", "session": "session3" },
     { "phone": "+19132940367", "session": "session4" },
-    { "phone": "+19042274632", "session": "session5" },
+    { "phone": "+919133155170", "session": "session5" },
+
+    { "phone": "+919238031501", "session": "session6" },
+    { "phone": "+919348621165", "session": "session7" },
+    { "phone": "+919548351267", "session": "session8" },
+    { "phone": "+919664628960", "session": "session9" },
+    { "phone": "+919749758044", "session": "session10" },
+    { "phone": "+919823607373", "session": "session11" },
+    { "phone": "+919825260673", "session": "session12" },
+    { "phone": "+919920105100", "session": "session13" },
 ]
 
 otp_regex = r"\b\d{4,6}\b"
@@ -55,6 +64,7 @@ async def main():
         await asyncio.gather(*(client.run_until_disconnected() for client in clients))
 
 asyncio.run(main())
+
 
 
 
